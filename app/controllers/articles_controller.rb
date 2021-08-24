@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles/new
   def new
-    @article = Article.new
+    @article = Article.new  #Da bsbb check bta3 el form fil 2wl 3a4an mtl34 error 3la tol
   end
 
   # GET /articles/1/edit
@@ -23,15 +23,17 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
 
-    respond_to do |format|
-      if @article.save
-        format.html { redirect_to @article, notice: "Article was successfully created." }
-        format.json { render :show, status: :created, location: @article }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @article.errors, status: :unprocessable_entity }
-      end
+     respond_to do |format|
+       if @article.save
+         format.html { redirect_to @article, notice: "Article was successfully created." }
+         format.json { render :show, status: :created, location: @article }
+       else
+         format.html { render :new, status: :unprocessable_entity }
+         format.json { render json: @article.errors, status: :unprocessable_entity }
+       end
     end
+    # @article.save
+    # redirect_to article_path(@article)
   end
 
   # PATCH/PUT /articles/1 or /articles/1.json
