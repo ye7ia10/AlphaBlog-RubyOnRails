@@ -1,15 +1,30 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
+<div id="page-contents">
+  <h1 class="text-center m-2">Article Details</h1>
 
-<p>
-  <strong>Desc:</strong>
-  <%= @article.desc %>
-</p>
+<div class = "container mt-4">
+    <div class = "row justify-content-md-center">
+    <div class = "col-8">
+      <div class="card text-center shadow mb-5 bg-white rounded">
+        <div class="card-header">
+          By Yehia Elsayed
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"><%=link_to @article.title, article_path(@article), class:"text-success" %></h5>
+          <div class="card-text text-left"><%= simple_format(@article.desc) %></div>
+          <%= link_to "Edit", edit_article_path(@article), class: "btn btn-outline-info" %>
+          <%= link_to "Delete", article_path(@article), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+        </div>
+        <div class="card-footer text-muted">
+          <small>
+            Created <%= time_ago_in_words(@article.created_at)%> ago , 
+            Updated <%= time_ago_in_words(@article.updated_at)%> ago.
+          </small>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+  
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %> |
-<%= link_to 'Delete', article_path(@article), method: :delete , data: { confirm: "Are U Sure ?"}%>
+</div>
