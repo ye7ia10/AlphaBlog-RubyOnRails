@@ -1,0 +1,5 @@
+<div id="page-content">
+  <h1 class="text-center m-2"><%= @user.username%> 's profile</h1>
+  <%= gravatar_for(@user, 200) %>
+  <h1 class="text-center m-2">Articles</h1>
+  <%= render 'articles/article'%>
