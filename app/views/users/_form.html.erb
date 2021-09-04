@@ -6,7 +6,7 @@
         <div class="form-group row">
           <%= f.label :username, class: "col-2 col-form-label text-light" %>
           <div class="col-10">
-            <%= f.text_field :title, class: "form-control shadow rounded", placeholder: "User Name" %>
+            <%= f.text_field :username, class: "form-control shadow rounded", placeholder: "User Name" %>
           </div>
         </div>
         <div class="form-group row">
@@ -16,13 +16,13 @@
           </div>
         </div>
          <div class="form-group row">
-          <%= f.label :password, class: "col-2 col-form-label text-light" %>
+          <%= f.label :password_digest, class: "col-2 col-form-label text-light" %>
           <div class="col-10"> 
-            <%= f.password_field :password, class: "form-control shadow rounded", placeholder: "Enter A Strong Password" %>
+            <%= f.password_field :password_digest, class: "form-control shadow rounded", placeholder: "Enter A Strong Password" %>
           </div>
         </div>
         <div class="form-group row justify-content-center">
-          <%= f.submit class: "btn btn-outline-light btn-lg" %>
+          <%= f.submit "Sign Up",  class: "btn btn-outline-light btn-lg" %>
         </div>
       <% end %>
     </div>
