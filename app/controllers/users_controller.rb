@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
 
     before_action :set_user , only: %i[ show edit update destroy ]
+    before_action :require_user , only: %i[edit update destroy]
+    before_action :require_same_user , only: %i[edit update destroy]
 
     def new 
         @user = User.new
@@ -44,8 +46,15 @@ class UsersController < ApplicationController
     end
 
      # Use callbacks to share common setup or constraints between actions.
-     def set_user
+    def set_user
         @user = User.find(params[:id])
-      end
+    end
+
+    def require_same_user 
+        if current_user != @user
+            flash[:alert] = "Acction Denied"
+            redirect_to @user
+        end
+    end
 
 end
