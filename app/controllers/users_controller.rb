@@ -40,6 +40,15 @@ class UsersController < ApplicationController
         @articles = @user.articles
     end
 
+    def destroy
+        @user.destroy
+        session[:user_id] = nil if @user == current_user
+        flash[:notice] = "Account Deleted !"
+        if !current_user.admin?
+            redirect_to root_path
+        end
+    end
+
     private
     def user_params
         params.require(:user).permit(:username, :email, :password)
@@ -51,7 +60,7 @@ class UsersController < ApplicationController
     end
 
     def require_same_user 
-        if current_user != @user
+        if current_user != @user && !current_user.admin?
             flash[:alert] = "Acction Denied"
             redirect_to @user
         end
