@@ -1,0 +1,40 @@
+<div id="page-content">
+  <h1 class="text-center m-2">Alpha Categories</h1>
+
+ <div class="flickr_pagination ">
+    <%= will_paginate @categories, :container => false %>
+  </div>
+
+<div class = "container mt-4">
+ 
+
+ <% @categories.each do |category| %>
+    <div class = "row justify-content-md-center">
+            <div class = "col-8">
+                <div class="card text-center shadow mb-5 bg-white rounded">
+                    <div class="card-header">
+                      <%= link_to category.name , category %>
+                    </div>
+                    <div class="card-body">
+                        
+                    <p class="card-text"><%= category.name.length %></p>
+                       
+                    </div>
+                    <div class="card-footer text-muted">
+                    <small>
+                        Created <%= time_ago_in_words(category.created_at)%> ago.
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <% end %>
+</div>
+
+ <div class="flickr_pagination mb-4">
+    <%= will_paginate @categories, :container => false %>
+  </div>
+  
+
+</div>

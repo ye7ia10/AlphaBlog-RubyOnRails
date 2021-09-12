@@ -7,7 +7,5 @@ module ApplicationHelper
     end
 
   
-    def logged_in?
-        !! current_user  #this converts the answer to boolean
-    end
+    
 end
